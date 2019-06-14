@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Brick\Schema\Meta\_Class;
 use Brick\Schema\Meta\_Property;
+use Brick\VarExporter\VarExporter;
 
 require 'vendor/autoload.php';
 
@@ -124,13 +125,20 @@ function findChildren(array $classes, ?string $parentId) : array
 }
 
 /**
- * @param _Class[]    $classes    A map of id to schema.org classes to generate.
- * @param _Property[] $properties The flat map of id to schema.org properties.
+ * Returns a map of schema.org class labels to a list of class labels it extends.
  *
- * @return void
+ * Only direct ancestors are returned.
+ *
+ * e.g. ['Thing' => [], 'Product' => ['Thing'], ...]
+ *
+ * @param _Class[] $classes A map of id to schema.org classes.
+ *
+ * @return array
  */
-function generatePhpInterfaces(array $classes, array $properties) : void
+function getSubclassOf(array $classes) : array
 {
+    $result = [];
+
     foreach ($classes as $id => $class) {
         $subClassOfLabels = [];
 
@@ -141,6 +149,134 @@ function generatePhpInterfaces(array $classes, array $properties) : void
                 echo "Warning: $id is marked as subClassOf $subclassOfId which does not exist.\n";
             }
         }
+
+        $result[$class->label] = $subClassOfLabels;
+    }
+
+    return $result;
+}
+
+$subclassOf = getSubclassOf($classes);
+
+/**
+ * Returns all parents of the given class name, including indirect ancestors.
+ *
+ * @param string $class The class label.
+ *
+ * @return string[] The parent class labels.
+ */
+function getClassParents(string $class) : array
+{
+    global $subclassOf;
+
+    $result = [];
+
+    foreach ($subclassOf[$class] as $parent) {
+        $result[] = [$parent];
+        $result[] = getClassParents($parent);
+    }
+
+    if (! $result) {
+        return [];
+    }
+
+    return array_unique(array_merge(...$result));
+}
+
+/**
+ * Returns a map of schema.org class labels to list of properties.
+ *
+ * e.g. ['Thing' => ['name', 'url', ...], 'Product' => ['sku', 'mpn', ...], ...]
+ *
+ * Properties inherited from parent classes are NOT included.
+ *
+ * @param _Class[]    $classes    A map of id to schema.org classes to generate.
+ * @param _Property[] $properties The flat map of id to schema.org properties.
+ *
+ * @return array
+ */
+function getClassProperties(array $classes, array $properties) : array
+{
+    $result = [];
+
+    foreach ($classes as $id => $class) {
+        /** @var _Property[] $classProperties */
+        $classProperties = array_filter($properties, function(_Property $property) use ($id) : bool {
+            return in_array($id, $property->domainIncludesIds, true);
+        });
+
+        $classProperties = array_map(function(_Property $property) {
+            return $property->label;
+        }, $classProperties);
+
+        $result[$class->label] = array_values($classProperties);
+    }
+
+    return $result;
+}
+
+$classProperties = getClassProperties($classes, $properties);
+
+/**
+ * Returns a map of schema.org class labels to list of properties, INCLUDING parent properties.
+ *
+ * e.g. ['Thing' => ['name', 'url', ...], 'Product' => ['sku', 'mpn', ...], ...]
+ *
+ * Class names and property names are sorted.
+ *
+ * @return array
+ */
+function getClassAllProperties() : array
+{
+    global $classes;
+    global $classProperties;
+
+    $result = [];
+
+    foreach ($classes as $class) {
+        $properties = [$classProperties[$class->label]];
+
+        foreach (getClassParents($class->label) as $parent) {
+            $properties[] = $classProperties[$parent];
+        }
+
+        if ($properties) {
+            $properties = array_merge(...$properties);
+        } else {
+            $properties = [];
+        }
+
+        $properties = array_unique($properties);
+        $properties = array_values($properties);
+
+        sort($properties);
+
+        $result[$class->label] = $properties;
+    }
+
+    ksort($result);
+
+    return $result;
+}
+
+$classAllProperties = getClassAllProperties();
+
+file_put_contents(__DIR__ . '/data/properties.php', '<?php ' . VarExporter::export(
+        $classAllProperties, VarExporter::ADD_RETURN
+    ));
+
+/**
+ * @param _Class[]    $classes    A map of id to schema.org classes to generate.
+ * @param _Property[] $properties The flat map of id to schema.org properties.
+ *
+ * @return void
+ */
+function generatePhpInterfaces(array $classes, array $properties) : void
+{
+    global $subclassOf;
+
+    foreach ($classes as $id => $class) {
+        $subClassOfLabels = $subclassOf[$class->label];
 
         $interface = $class->label;
 

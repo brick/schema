@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Brick\Schema;
 
+use Brick\Schema\Interfaces\Thing;
+
 use ArrayIterator;
 use IteratorAggregate;
 
 class SchemaTypeList implements IteratorAggregate
 {
     /**
-     * @var SchemaType[]
+     * @var array<Thing|null>
      */
     private $values;
 
     /**
-     * SchemaTypeList constructor.
-     *
-     * @param SchemaType[] $values
+     * @param Thing|string $value
      */
-    public function __construct(array $values = [])
+    public function addValue($value) : void
     {
-        $this->values = $values;
+        $this->values[] = $value;
     }
 
     /**
-     * @return SchemaType[]
+     * @return array<Thing|string>
      */
     public function getValues() : array
     {
@@ -33,15 +33,27 @@ class SchemaTypeList implements IteratorAggregate
     }
 
     /**
-     * @return SchemaType|null
+     * @return Thing|string|null
      */
-    public function getFirstValue() : ?SchemaType
+    public function getFirstValue()
     {
         return $this->values[0] ?? null;
     }
 
     /**
-     * @return ArrayIterator<SchemaType>
+     * @return string|null
+     */
+    public function toString() : ?string
+    {
+        if (isset($this->values[0]) && is_string($this->values[0])) {
+            return $this->values[0];
+        }
+
+        return null;
+    }
+
+    /**
+     * @return ArrayIterator<Thing|string>
      */
     public function getIterator() : ArrayIterator
     {

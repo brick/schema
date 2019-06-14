@@ -13,7 +13,9 @@
   ],
   "license": "MIT",
   "require": {
-    "php": ">=7.2"
+    "php": ">=7.2",
+    "brick/structured-data": "dev-master",
+    "brick/varexporter": "^0.2.1"
   },
   "autoload": {
     "psr-4": {

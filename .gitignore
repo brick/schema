@@ -1,4 +1,5 @@
 /schema.jsonld
+/jsonldcontext.jsonld
 /vendor
 /composer.lock
 /.idea
