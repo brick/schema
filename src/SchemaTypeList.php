@@ -59,4 +59,18 @@ class SchemaTypeList implements IteratorAggregate
     {
         return new ArrayIterator($this->values);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString() : string
+    {
+        foreach ($this->values as $value) {
+            if (is_string($value)) {
+                return $value;
+            }
+        }
+
+        return '';
+    }
 }
