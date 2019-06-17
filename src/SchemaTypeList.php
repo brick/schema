@@ -14,7 +14,7 @@ class SchemaTypeList implements IteratorAggregate
     /**
      * @var array<Thing|null>
      */
-    private $values;
+    private $values = [];
 
     /**
      * @param Thing|string $value
