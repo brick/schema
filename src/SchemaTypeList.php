@@ -7,9 +7,10 @@ namespace Brick\Schema;
 use Brick\Schema\Interfaces\Thing;
 
 use ArrayIterator;
+use Countable;
 use IteratorAggregate;
 
-class SchemaTypeList implements IteratorAggregate
+class SchemaTypeList implements Countable, IteratorAggregate
 {
     /**
      * @var array<Thing|null>
@@ -50,6 +51,14 @@ class SchemaTypeList implements IteratorAggregate
         }
 
         return null;
+    }
+
+    /**
+     * @return int
+     */
+    public function count() : int
+    {
+        return count($this->values);
     }
 
     /**
