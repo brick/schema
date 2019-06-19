@@ -52,15 +52,38 @@ class Reader
     }
 
     /**
+     * @param string $html
+     * @param string $url
+     *
+     * @return Thing[]
+     */
+    public function read(string $html, string $url) : array
+    {
+        $items = $this->htmlReader->read($html, $url);
+
+        return $this->convertItemsToThings($items);
+    }
+
+    /**
      * @param string $file
      * @param string $url
      *
      * @return Thing[]
      */
-    public function read(string $file, string $url) : array
+    public function readFile(string $file, string $url) : array
     {
-        $items = $this->htmlReader->read($file, $url);
+        $items = $this->htmlReader->readFile($file, $url);
 
+        return $this->convertItemsToThings($items);
+    }
+
+    /**
+     * @param Item[] $items
+     *
+     * @return Thing[]
+     */
+    private function convertItemsToThings(array $items) : array
+    {
         $things = array_map(function(Item $item) {
             return $this->convertItemToThing($item);
         }, $items);
