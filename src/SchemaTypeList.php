@@ -13,7 +13,7 @@ use IteratorAggregate;
 class SchemaTypeList implements Countable, IteratorAggregate
 {
     /**
-     * @var array<Thing|null>
+     * @var array<Thing|string>
      */
     private $values = [];
 
