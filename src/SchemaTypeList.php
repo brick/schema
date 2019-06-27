@@ -42,6 +42,26 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Returns the first non-empty trimmed string from the list, or null if none.
+     *
+     * @return string|null
+     */
+    public function getFirstNonEmptyStringValue() : ?string
+    {
+        foreach ($this->values as $value) {
+            if (is_string($value)) {
+                $value = trim($value);
+
+                if ($value !== '') {
+                    return $value;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @return string|null
      */
     public function toString() : ?string
