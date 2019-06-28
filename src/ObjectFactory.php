@@ -25,6 +25,18 @@ class ObjectFactory
     private $propertiesByType = [];
 
     /**
+     * A cache of dynamically created objects, indexed by schema.org class names.
+     *
+     * These objects are cloned on demand, limiting a memory leak:
+     * https://externals.io/message/106084
+     *
+     * Keys are space-separated schema.org class names, ordered by name, e.g. 'Offer Product'.
+     *
+     * @var Thing[]
+     */
+    private $prototypeCache;
+
+    /**
      * ObjectFactory constructor.
      *
      * @param string[][] $propertiesByType
@@ -55,6 +67,14 @@ class ObjectFactory
             return null;
         }
 
+        sort($types);
+
+        $cacheKey = implode(' ', $types);
+
+        if (isset($this->prototypeCache[$cacheKey])) {
+            return clone $this->prototypeCache[$cacheKey];
+        }
+
         $interfaces = array_map(function(string $type) : string {
             return 'Brick\\Schema\\Interfaces\\' . $type;
         }, $types);
@@ -75,6 +95,10 @@ class ObjectFactory
             implode(', ', $interfaces)
         );
 
-        return eval($php);
+        $object = eval($php);
+
+        $this->prototypeCache[$cacheKey] = $object;
+
+        return clone $object;
     }
 }
