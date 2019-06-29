@@ -29,6 +29,22 @@ class SchemaReader
      */
     public function __construct()
     {
+        $reader = new ReaderChain(
+            new MicrodataReader(),
+            new RdfaLiteReader(),
+            self::buildJsonLdReader()
+        );
+
+        $this->htmlReader = new HTMLReader($reader);
+    }
+
+    /**
+     * Builds a JSON-LD reader configured for schema.org.
+     *
+     * @return JsonLdReader
+     */
+    public static function buildJsonLdReader() : JsonLdReader
+    {
         $idProperties = require __DIR__ . '/../data/id-properties.php';
 
         $idPropertiesHttps = array_map(function(string $id) {
@@ -37,13 +53,7 @@ class SchemaReader
 
         $idProperties = array_merge($idProperties, $idPropertiesHttps);
 
-        $reader = new ReaderChain(
-            new MicrodataReader(),
-            new RdfaLiteReader(),
-            new JsonLdReader($idProperties)
-        );
-
-        $this->htmlReader = new HTMLReader($reader);
+        return new JsonLdReader($idProperties);
     }
 
     /**
