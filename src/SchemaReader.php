@@ -12,7 +12,7 @@ use Brick\StructuredData\Reader\MicrodataReader;
 use Brick\StructuredData\Reader\RdfaLiteReader;
 use Brick\StructuredData\Reader\ReaderChain;
 
-class Reader
+class SchemaReader
 {
     /**
      * @var HTMLReader
