@@ -7,13 +7,21 @@ namespace Brick\Schema;
 use Brick\Schema\Interfaces\Thing;
 
 use Brick\StructuredData\HTMLReader;
+use Brick\StructuredData\Reader;
 use Brick\StructuredData\Reader\JsonLdReader;
 use Brick\StructuredData\Reader\MicrodataReader;
 use Brick\StructuredData\Reader\RdfaLiteReader;
 use Brick\StructuredData\Reader\ReaderChain;
 
+use DOMDocument;
+
 class SchemaReader
 {
+    /**
+     * @var Reader
+     */
+    private $reader;
+
     /**
      * @var HTMLReader
      */
@@ -29,7 +37,8 @@ class SchemaReader
      */
     public function __construct()
     {
-        $this->htmlReader = new HTMLReader(self::buildReaderChain());
+        $this->reader = self::buildReaderChain();
+        $this->htmlReader = new HTMLReader($this->reader);
     }
 
     /**
@@ -65,12 +74,25 @@ class SchemaReader
     }
 
     /**
+     * @param DOMDocument $document
+     * @param string      $url
+     *
+     * @return Thing[]
+     */
+    public function read(DOMDocument $document, string $url) : array
+    {
+        $items = $this->reader->read($document, $url);
+
+        return $this->thingConverter->convertItemsToThings($items);
+    }
+
+    /**
      * @param string $html
      * @param string $url
      *
      * @return Thing[]
      */
-    public function read(string $html, string $url) : array
+    public function readHtml(string $html, string $url) : array
     {
         $items = $this->htmlReader->read($html, $url);
 
