@@ -33,12 +33,54 @@ class SchemaReader
     private $thingConverter;
 
     /**
-     * Reader constructor.
+     * SchemaReader constructor.
+     *
+     * @param Reader $reader
      */
-    public function __construct()
+    public function __construct(Reader $reader)
     {
-        $this->reader = self::buildReaderChain();
+        $this->reader = $reader;
         $this->htmlReader = new HTMLReader($this->reader);
+    }
+
+    /**
+     * Returns a schema reader that can read only Microdata.
+     *
+     * @return SchemaReader
+     */
+    public static function forMicrodata() : SchemaReader
+    {
+        return new SchemaReader(new MicrodataReader());
+    }
+
+    /**
+     * Returns a schema reader that can read only RDFa Lite.
+     *
+     * @return SchemaReader
+     */
+    public static function forRdfaLite() : SchemaReader
+    {
+        return new SchemaReader(new RdfaLiteReader());
+    }
+
+    /**
+     * Returns a schema reader that can read only JSON-LD.
+     *
+     * @return SchemaReader
+     */
+    public static function forJsonLd() : SchemaReader
+    {
+        return new SchemaReader(self::buildJsonLdReader());
+    }
+
+    /**
+     * Returns a schema reader that can read Microdata, RDFa Lite and JSON-LD.
+     *
+     * @return SchemaReader
+     */
+    public static function forAllFormats() : SchemaReader
+    {
+        return new SchemaReader(self::buildReaderChain());
     }
 
     /**
