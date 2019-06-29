@@ -29,13 +29,21 @@ class SchemaReader
      */
     public function __construct()
     {
-        $reader = new ReaderChain(
+        $this->htmlReader = new HTMLReader(self::buildReaderChain());
+    }
+
+    /**
+     * Builds a structured data Reader chain comprised of Microdata, RDFa and JSON-LD readers.
+     *
+     * @return ReaderChain
+     */
+    public static function buildReaderChain() : ReaderChain
+    {
+        return new ReaderChain(
             new MicrodataReader(),
             new RdfaLiteReader(),
             self::buildJsonLdReader()
         );
-
-        $this->htmlReader = new HTMLReader($reader);
     }
 
     /**
