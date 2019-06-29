@@ -41,6 +41,7 @@ class SchemaReader
     {
         $this->reader = $reader;
         $this->htmlReader = new HTMLReader($this->reader);
+        $this->thingConverter = new ThingConverter();
     }
 
     /**
