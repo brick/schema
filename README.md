@@ -124,12 +124,15 @@ foreach ($things as $thing) {
 }
 ```
 
+Note: if you're attempting to access a property that's not defined on any of the types the `Thing` object implements,
+an exception will be thrown.
+
 ### Caveats
 
-The schema.org interfaces are designed to be quite lenient. While they do document expected types for every property
-(for example, a [Product](https://schema.org/Product)'s offers may only be of the `Offer` type), in practice this
-library, in accordance with the schema.org datamodel, **accepts any `Thing` or `string` in any
-field.**
+While the schema.org properties are well defined, they are designed to be quite lenient in terms of what *values* they
+accept. While they do document expected types for every property (for example, a [Product](https://schema.org/Product)'s
+offers may only be of the `Offer` type), in practice this library, in accordance with the schema.org datamodel,
+**accepts any `Thing` or `string` in any field.**
 
 You should therefore take all documented interface property types with a grain of salt, and ***always* perform checks
 such as `instanceof` or `is_string()` in your code**.
