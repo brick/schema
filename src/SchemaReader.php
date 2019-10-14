@@ -148,7 +148,7 @@ class SchemaReader
      *
      * @return Thing[]
      */
-    public function readFile(string $file, string $url) : array
+    public function readHtmlFile(string $file, string $url) : array
     {
         $items = $this->htmlReader->readFile($file, $url);
 
