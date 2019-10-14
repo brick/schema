@@ -26,6 +26,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Returns all the values in this list.
+     *
      * @return array<Thing|string>
      */
     public function getValues() : array
@@ -34,6 +36,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Returns the first value in this list, or null if empty.
+     *
      * @return Thing|string|null
      */
     public function getFirstValue()
@@ -62,6 +66,11 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Attempts to convert this list to a string.
+     *
+     * If this list contains at least one value, and the first one is a string, this one is returned.
+     * If the list is empty, or the first value is not a string, null is returned.
+     *
      * @return string|null
      */
     public function toString() : ?string
@@ -74,6 +83,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Returns the number of values in this list.
+     *
      * @return int
      */
     public function count() : int
@@ -82,6 +93,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Makes the object iterable.
+     *
      * @return ArrayIterator<Thing|string>
      */
     public function getIterator() : ArrayIterator
@@ -90,6 +103,13 @@ class SchemaTypeList implements Countable, IteratorAggregate
     }
 
     /**
+     * Converts this list to a string.
+     *
+     * The logic is slightly different from toString().
+     *
+     * If this list contains at least one string, the first string value will be returned.
+     * If this list does not contain any string, an empty string is returned.
+     *
      * @return string
      */
     public function __toString() : string
