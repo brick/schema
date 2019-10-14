@@ -1,5 +1,6 @@
 .gitattributes             export-ignore
 .gitignore                 export-ignore
+README.md                  export-ignore
 meta                       export-ignore
 generate-id-properties.php export-ignore
 generate-schema.php        export-ignore
