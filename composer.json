@@ -15,7 +15,7 @@
   "require": {
     "php": ">=7.2",
     "ext-dom": "*",
-    "brick/structured-data": "dev-master",
+    "brick/structured-data": "^0.1.0",
     "brick/varexporter": "^0.2.1"
   },
   "autoload": {
