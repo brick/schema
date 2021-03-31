@@ -62,9 +62,13 @@ $schemaReader = SchemaReader::forAllFormats();
 Then, you can proceed to reading an HTML document:
 
 ```php
-$things = $schemaReader->readHtml($html);               // An HTML document as a string
-// or $things = $schemaReader->readHtmlFile($htmlFile); // A path to an HTML file
-// or $things = $schemaReader->read($domDocument);      // A DOMDocument instance
+// The URL the document was retrieved from. This will be used only to resolve relative
+// URLs in property values. No attempt will be performed to connect to this URL.
+$url = 'https://example.com/product/123';
+
+$things = $schemaReader->readHtml($html, $url);               // An HTML document as a string
+// or $things = $schemaReader->readHtmlFile($htmlFile, $url); // A path to an HTML file
+// or $things = $schemaReader->read($domDocument, $url);      // A DOMDocument instance
 ```
 
 This returns an array of `Thing` instances, which is the [base class](https://schema.org/Thing) from which all schema.org objects inherit.
