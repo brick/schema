@@ -8,9 +8,9 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/HowToSupply
+ * schema:HowToSupply
  *
- * @property-read SchemaTypeList<Text|MonetaryAmount> $estimatedCost The estimated cost of the supply or supplies consumed when performing instructions.
+ * @property-read SchemaTypeList<MonetaryAmount|Text> $estimatedCost The estimated cost of the supply or supplies consumed when performing instructions.
  */
 interface HowToSupply extends HowToItem
 {

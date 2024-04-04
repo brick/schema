@@ -6,11 +6,12 @@ namespace Brick\Schema\Interfaces;
 
 use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\DateTime;
+use Brick\Schema\DataType\Date;
 
 /**
- * http://schema.org/PlanAction
+ * schema:PlanAction
  *
- * @property-read SchemaTypeList<DateTime> $scheduledTime The time the object is scheduled to.
+ * @property-read SchemaTypeList<DateTime|Date> $scheduledTime The time the object is scheduled to.
  */
 interface PlanAction extends OrganizeAction
 {

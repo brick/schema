@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/LendAction
+ * schema:LendAction
  *
  * @property-read SchemaTypeList<Person> $borrower A sub property of participant. The person that borrows the object being lent.
  */

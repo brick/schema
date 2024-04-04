@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/Campground
+ * schema:Campground
  */
-interface Campground extends CivicStructure, LodgingBusiness
+interface Campground extends LodgingBusiness, CivicStructure
 {
 }

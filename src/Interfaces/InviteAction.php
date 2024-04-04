@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/InviteAction
+ * schema:InviteAction
  *
  * @property-read SchemaTypeList<Event> $event Upcoming or past event associated with this place, organization, or action.
  */

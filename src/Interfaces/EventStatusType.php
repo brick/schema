@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/EventStatusType
+ * schema:EventStatusType
  */
-interface EventStatusType extends Enumeration
+interface EventStatusType extends StatusEnumeration
 {
 }

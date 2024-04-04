@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/RecyclingCenter
+ * schema:RecyclingCenter
  */
 interface RecyclingCenter extends LocalBusiness
 {

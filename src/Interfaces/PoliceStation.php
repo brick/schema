@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/PoliceStation
+ * schema:PoliceStation
  */
-interface PoliceStation extends CivicStructure, EmergencyService
+interface PoliceStation extends EmergencyService, CivicStructure
 {
 }

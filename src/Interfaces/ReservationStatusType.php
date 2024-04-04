@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/ReservationStatusType
+ * schema:ReservationStatusType
  */
-interface ReservationStatusType extends Enumeration
+interface ReservationStatusType extends StatusEnumeration
 {
 }

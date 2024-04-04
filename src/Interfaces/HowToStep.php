@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/HowToStep
+ * schema:HowToStep
  */
-interface HowToStep extends ListItem, CreativeWork, ItemList
+interface HowToStep extends CreativeWork, ListItem, ItemList
 {
 }

@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/SportsOrganization
+ * schema:SportsOrganization
  *
  * @property-read SchemaTypeList<Text|URL> $sport A type of sport (e.g. Baseball).
  */

@@ -7,9 +7,9 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/FollowAction
+ * schema:FollowAction
  *
- * @property-read SchemaTypeList<Organization|Person> $followee A sub property of object. The person or organization being followed.
+ * @property-read SchemaTypeList<Person|Organization> $followee A sub property of object. The person or organization being followed.
  */
 interface FollowAction extends InteractAction
 {

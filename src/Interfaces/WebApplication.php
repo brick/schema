@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/WebApplication
+ * schema:WebApplication
  *
  * @property-read SchemaTypeList<Text> $browserRequirements Specifies browser requirements in human-readable text. For example, 'requires HTML5 support'.
  */

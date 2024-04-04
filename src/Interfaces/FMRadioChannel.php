@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/FMRadioChannel
+ * schema:FMRadioChannel
  */
 interface FMRadioChannel extends RadioChannel
 {

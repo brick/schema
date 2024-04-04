@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/TennisComplex
+ * schema:TennisComplex
  */
 interface TennisComplex extends SportsActivityLocation
 {

@@ -7,10 +7,10 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/ReplaceAction
+ * schema:ReplaceAction
  *
- * @property-read SchemaTypeList<Thing> $replacee A sub property of object. The object that is being replaced.
  * @property-read SchemaTypeList<Thing> $replacer A sub property of object. The object that replaces.
+ * @property-read SchemaTypeList<Thing> $replacee A sub property of object. The object that is being replaced.
  */
 interface ReplaceAction extends UpdateAction
 {

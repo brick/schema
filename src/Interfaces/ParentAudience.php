@@ -8,10 +8,10 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Number;
 
 /**
- * http://schema.org/ParentAudience
+ * schema:ParentAudience
  *
- * @property-read SchemaTypeList<Number> $childMaxAge Maximal age of the child.
  * @property-read SchemaTypeList<Number> $childMinAge Minimal age of the child.
+ * @property-read SchemaTypeList<Number> $childMaxAge Maximal age of the child.
  */
 interface ParentAudience extends PeopleAudience
 {

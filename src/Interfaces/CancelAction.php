@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/CancelAction
+ * schema:CancelAction
  */
 interface CancelAction extends PlanAction
 {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/GatedResidenceCommunity
+ * schema:GatedResidenceCommunity
  */
 interface GatedResidenceCommunity extends Residence
 {

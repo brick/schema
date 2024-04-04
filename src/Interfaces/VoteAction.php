@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/VoteAction
+ * schema:VoteAction
  *
  * @property-read SchemaTypeList<Person> $candidate A sub property of object. The candidate subject of this action.
  */

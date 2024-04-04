@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/Pharmacy
+ * schema:Pharmacy
  */
-interface Pharmacy extends MedicalOrganization
+interface Pharmacy extends MedicalOrganization, MedicalBusiness
 {
 }
