@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/ReservationPackage
+ * schema:ReservationPackage
  *
  * @property-read SchemaTypeList<Reservation> $subReservation The individual reservations included in the package. Typically a repeated property.
  */

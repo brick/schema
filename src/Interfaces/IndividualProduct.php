@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/IndividualProduct
+ * schema:IndividualProduct
  *
  * @property-read SchemaTypeList<Text> $serialNumber The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.
  */

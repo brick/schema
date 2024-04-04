@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Number;
 
 /**
- * http://schema.org/House
+ * schema:House
  *
  * @property-read SchemaTypeList<Number|QuantitativeValue> $numberOfRooms The number of rooms (excluding bathrooms and closets) of the accommodation or lodging business.
  */

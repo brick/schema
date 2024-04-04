@@ -8,9 +8,9 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/ChooseAction
+ * schema:ChooseAction
  *
- * @property-read SchemaTypeList<Text|Thing> $actionOption A sub property of object. The options subject to this action.
+ * @property-read SchemaTypeList<Thing|Text> $actionOption A sub property of object. The options subject to this action.
  * @property-read SchemaTypeList<Text|Thing> $option       A sub property of object. The options subject to this action.
  */
 interface ChooseAction extends AssessAction

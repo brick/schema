@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/CreditCard
+ * schema:CreditCard
  */
-interface CreditCard extends LoanOrCredit, PaymentCard
+interface CreditCard extends PaymentCard, LoanOrCredit
 {
 }

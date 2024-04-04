@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/Dentist
+ * schema:Dentist
  */
-interface Dentist extends MedicalOrganization, LocalBusiness
+interface Dentist extends LocalBusiness, MedicalBusiness, MedicalOrganization
 {
 }

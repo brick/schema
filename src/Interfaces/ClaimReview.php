@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/ClaimReview
+ * schema:ClaimReview
  *
  * @property-read SchemaTypeList<Text> $claimReviewed A short summary of the specific claims reviewed in a ClaimReview.
  */

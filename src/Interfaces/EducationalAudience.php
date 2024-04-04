@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/EducationalAudience
+ * schema:EducationalAudience
  *
  * @property-read SchemaTypeList<Text> $educationalRole An educationalRole of an EducationalAudience.
  */

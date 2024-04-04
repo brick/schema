@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/GameServerStatus
+ * schema:GameServerStatus
  */
-interface GameServerStatus extends Enumeration
+interface GameServerStatus extends StatusEnumeration
 {
 }

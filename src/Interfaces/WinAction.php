@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/WinAction
+ * schema:WinAction
  *
  * @property-read SchemaTypeList<Person> $loser A sub property of participant. The loser of the action.
  */

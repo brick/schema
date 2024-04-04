@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/OrderAction
+ * schema:OrderAction
  *
  * @property-read SchemaTypeList<DeliveryMethod> $deliveryMethod A sub property of instrument. The method of delivery.
  */

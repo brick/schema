@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/CityHall
+ * schema:CityHall
  */
 interface CityHall extends GovernmentBuilding
 {

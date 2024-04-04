@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/ListenAction
+ * schema:ListenAction
  */
 interface ListenAction extends ConsumeAction
 {

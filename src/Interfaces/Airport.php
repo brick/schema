@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/Airport
+ * schema:Airport
  *
  * @property-read SchemaTypeList<Text> $iataCode IATA identifier for an airline or airport.
  * @property-read SchemaTypeList<Text> $icaoCode ICAO identifier for an airport.

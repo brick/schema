@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/TravelAction
+ * schema:TravelAction
  *
  * @property-read SchemaTypeList<Distance> $distance The distance travelled, e.g. exercising or travelling.
  */

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/ActivateAction
+ * schema:ActivateAction
  */
 interface ActivateAction extends ControlAction
 {

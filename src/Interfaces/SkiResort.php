@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/SkiResort
+ * schema:SkiResort
  */
-interface SkiResort extends SportsActivityLocation
+interface SkiResort extends SportsActivityLocation, Resort
 {
 }

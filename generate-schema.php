@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
 
 $schema = json_decode(file_get_contents(__DIR__ . '/schema.jsonld'), true);
 
-$version = $schema['@id']; // http://schema.org/#3.6
+$version = $schema['@id']; // http://schema.org/#26
 
 /** @var _Class[] $classes */
 $classes = [];

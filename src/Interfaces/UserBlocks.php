@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/UserBlocks
+ * schema:UserBlocks
  */
 interface UserBlocks extends UserInteraction
 {

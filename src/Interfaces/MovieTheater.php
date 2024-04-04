@@ -8,10 +8,10 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Number;
 
 /**
- * http://schema.org/MovieTheater
+ * schema:MovieTheater
  *
  * @property-read SchemaTypeList<Number> $screenCount The number of screens in the movie theater.
  */
-interface MovieTheater extends CivicStructure, EntertainmentBusiness
+interface MovieTheater extends EntertainmentBusiness, CivicStructure
 {
 }

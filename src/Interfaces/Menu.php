@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/Menu
+ * schema:Menu
  *
  * @property-read SchemaTypeList<MenuItem>    $hasMenuItem    A food or drink item contained in a menu or menu section.
  * @property-read SchemaTypeList<MenuSection> $hasMenuSection A subgrouping of the menu (by dishes, course, serving time period, etc.).

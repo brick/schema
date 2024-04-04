@@ -8,10 +8,10 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/HowToSection
+ * schema:HowToSection
  *
- * @property-read SchemaTypeList<CreativeWork|ItemList|Text> $steps A single step item (as HowToStep, text, document, video, etc.) or a HowToSection (originally misnamed 'steps'; 'step' is preferred).
+ * @property-read SchemaTypeList<Text|CreativeWork|ItemList> $steps A single step item (as HowToStep, text, document, video, etc.) or a HowToSection (originally misnamed 'steps'; 'step' is preferred).
  */
-interface HowToSection extends ItemList, ListItem, CreativeWork
+interface HowToSection extends CreativeWork, ListItem, ItemList
 {
 }

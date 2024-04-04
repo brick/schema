@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/CurrencyConversionService
+ * schema:CurrencyConversionService
  */
 interface CurrencyConversionService extends FinancialProduct
 {

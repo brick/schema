@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/WarrantyScope
+ * schema:WarrantyScope
  */
 interface WarrantyScope extends Enumeration
 {

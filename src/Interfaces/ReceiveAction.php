@@ -7,10 +7,10 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/ReceiveAction
+ * schema:ReceiveAction
  *
+ * @property-read SchemaTypeList<Organization|Audience|Person> $sender         A sub property of participant. The participant who is at the sending end of the action.
  * @property-read SchemaTypeList<DeliveryMethod>               $deliveryMethod A sub property of instrument. The method of delivery.
- * @property-read SchemaTypeList<Audience|Organization|Person> $sender         A sub property of participant. The participant who is at the sending end of the action.
  */
 interface ReceiveAction extends TransferAction
 {

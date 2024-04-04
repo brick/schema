@@ -8,7 +8,7 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/PerformanceRole
+ * schema:PerformanceRole
  *
  * @property-read SchemaTypeList<Text> $characterName The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
  */

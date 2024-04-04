@@ -8,9 +8,9 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Number;
 
 /**
- * http://schema.org/InvestmentOrDeposit
+ * schema:InvestmentOrDeposit
  *
- * @property-read SchemaTypeList<Number|MonetaryAmount> $amount The amount of money.
+ * @property-read SchemaTypeList<MonetaryAmount|Number> $amount The amount of money.
  */
 interface InvestmentOrDeposit extends FinancialProduct
 {
