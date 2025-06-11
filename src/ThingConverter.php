@@ -7,7 +7,7 @@ namespace Brick\Schema;
 use Brick\Schema\Interfaces\Thing;
 use Brick\StructuredData\Item;
 
-class ThingConverter
+final class ThingConverter
 {
     /**
      * @var ObjectFactory

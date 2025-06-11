@@ -11,7 +11,7 @@ use Brick\Schema\Interfaces\Thing;
  *
  * @internal
  */
-class ObjectFactory
+final class ObjectFactory
 {
     /**
      * A map of schema.org type to list of schema.org properties.

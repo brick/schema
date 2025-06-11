@@ -7,6 +7,6 @@ namespace Brick\Schema\DataType;
 /**
  * http://schema.org/Number
  */
-class Number extends DataType
+final class Number extends DataType
 {
 }

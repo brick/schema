@@ -10,7 +10,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
-class SchemaTypeList implements Countable, IteratorAggregate
+final class SchemaTypeList implements Countable, IteratorAggregate
 {
     /**
      * @var array<Thing|string>

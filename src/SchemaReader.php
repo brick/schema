@@ -15,7 +15,7 @@ use Brick\StructuredData\Reader\ReaderChain;
 
 use DOMDocument;
 
-class SchemaReader
+final class SchemaReader
 {
     /**
      * @var Reader

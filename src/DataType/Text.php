@@ -7,6 +7,6 @@ namespace Brick\Schema\DataType;
 /**
  * http://schema.org/Text
  */
-class Text extends DataType
+final class Text extends DataType
 {
 }
