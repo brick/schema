@@ -13,7 +13,7 @@ use Brick\VarExporter\VarExporter;
 
 require 'vendor/autoload.php';
 
-$schema = json_decode(file_get_contents(__DIR__ . '/jsonldcontext.jsonld'));
+$schema = json_decode(file_get_contents(__DIR__ . '/jsonldcontext.jsonld'), flags: JSON_THROW_ON_ERROR);
 
 $ids = [];
 
