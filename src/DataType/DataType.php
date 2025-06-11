@@ -12,10 +12,7 @@ use Brick\Schema\SchemaTypeList;
  */
 class DataType implements SchemaType
 {
-    /**
-     * @var string
-     */
-    private $number;
+    private string $number;
 
     /**
      * DataType constructor.

@@ -9,10 +9,7 @@ use Brick\StructuredData\Item;
 
 final class ThingConverter
 {
-    /**
-     * @var ObjectFactory
-     */
-    private $objectFactory;
+    private ObjectFactory $objectFactory;
 
     /**
      * ThingConverter constructor.

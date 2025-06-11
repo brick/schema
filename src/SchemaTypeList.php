@@ -15,12 +15,9 @@ final class SchemaTypeList implements Countable, IteratorAggregate
     /**
      * @var array<Thing|string>
      */
-    private $values = [];
+    private array $values = [];
 
-    /**
-     * @param Thing|string $value
-     */
-    public function addValue($value) : void
+    public function addValue(Thing|string $value) : void
     {
         $this->values[] = $value;
     }
@@ -37,10 +34,8 @@ final class SchemaTypeList implements Countable, IteratorAggregate
 
     /**
      * Returns the first value in this list, or null if empty.
-     *
-     * @return Thing|string|null
      */
-    public function getFirstValue()
+    public function getFirstValue(): Thing|string|null
     {
         return $this->values[0] ?? null;
     }
