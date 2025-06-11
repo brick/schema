@@ -57,10 +57,7 @@ final class ObjectFactory
      */
     public function build(array $types) : ?Thing
     {
-        $types = array_filter($types, function(string $type) {
-            return isset($this->propertiesByType[$type]);
-        });
-
+        $types = array_filter($types, fn(string $type) => isset($this->propertiesByType[$type]));
         $types = array_values($types);
 
         if (! $types) {
@@ -75,14 +72,9 @@ final class ObjectFactory
             return clone $this->prototypeCache[$cacheKey];
         }
 
-        $interfaces = array_map(function(string $type) : string {
-            return 'Brick\\Schema\\Interfaces\\' . $type;
-        }, $types);
+        $interfaces = array_map(fn(string $type): string => 'Brick\\Schema\\Interfaces\\' . $type, $types);
 
-        $properties = array_map(function(string $type) : array {
-            return $this->propertiesByType[$type];
-        }, $types);
-
+        $properties = array_map(fn(string $type): array => $this->propertiesByType[$type], $types);
         $properties = array_merge(...$properties);
         $properties = array_unique($properties);
         $properties = array_values($properties);

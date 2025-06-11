@@ -98,9 +98,7 @@ final class SchemaReader
     {
         $idProperties = require __DIR__ . '/../data/id-properties.php';
 
-        $idPropertiesHttps = array_map(function(string $id) {
-            return preg_replace('/^http\:/', 'https:', $id);
-        }, $idProperties);
+        $idPropertiesHttps = array_map(fn(string $id) => preg_replace('/^http\:/', 'https:', $id), $idProperties);
 
         $idProperties = array_merge($idProperties, $idPropertiesHttps);
 
