@@ -25,7 +25,7 @@ abstract class Base
      *
      * @var string[]
      */
-    private array $types;
+    private readonly array $types;
 
     /**
      * The list of schema.org properties supported by this instance.
@@ -35,7 +35,7 @@ abstract class Base
      *
      * @var string[]
      */
-    private array $properties;
+    private readonly array $properties;
 
     /**
      * The values of each property, indexed by property name.

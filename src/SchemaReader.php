@@ -17,11 +17,11 @@ use DOMDocument;
 
 final class SchemaReader
 {
-    private Reader $reader;
+    private readonly Reader $reader;
 
-    private HTMLReader $htmlReader;
+    private readonly HTMLReader $htmlReader;
 
-    private ThingConverter $thingConverter;
+    private readonly ThingConverter $thingConverter;
 
     /**
      * SchemaReader constructor.

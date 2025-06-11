@@ -22,7 +22,7 @@ final class ObjectFactory
      *
      * @var string[][]
      */
-    private array $propertiesByType;
+    private readonly array $propertiesByType;
 
     /**
      * A cache of dynamically created objects, indexed by schema.org class names.
