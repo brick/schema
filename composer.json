@@ -29,6 +29,6 @@
     }
   },
   "require-dev": {
-    "brick/varexporter": "^0.2.1 || ^0.3.0"
+    "brick/varexporter": "^0.6"
   }
 }
