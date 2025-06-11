@@ -9,6 +9,7 @@ use Brick\Schema\Interfaces\Thing;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Override;
 
 final class SchemaTypeList implements Countable, IteratorAggregate
 {
@@ -82,6 +83,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate
      *
      * @return int
      */
+    #[Override]
     public function count() : int
     {
         return count($this->values);
@@ -92,6 +94,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate
      *
      * @return ArrayIterator<Thing|string>
      */
+    #[Override]
     public function getIterator() : ArrayIterator
     {
         return new ArrayIterator($this->values);

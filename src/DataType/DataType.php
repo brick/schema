@@ -6,6 +6,7 @@ namespace Brick\Schema\DataType;
 
 use Brick\Schema\SchemaType;
 use Brick\Schema\SchemaTypeList;
+use Override;
 
 /**
  * http://schema.org/DataType
@@ -32,17 +33,13 @@ class DataType implements SchemaType
         return $this->number;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function includesProperty(string $name) : bool
     {
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getProperty(string $name) : SchemaTypeList
     {
         return new SchemaTypeList([]);
