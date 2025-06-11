@@ -6,12 +6,6 @@
     </TooManyArguments>
   </file>
   <file src="src/ObjectFactory.php">
-    <MixedAssignment>
-      <code><![CDATA[$object]]></code>
-    </MixedAssignment>
-    <MixedClone>
-      <code><![CDATA[clone $object]]></code>
-    </MixedClone>
     <MixedPropertyTypeCoercion>
       <code><![CDATA[$this->prototypeCache]]></code>
     </MixedPropertyTypeCoercion>

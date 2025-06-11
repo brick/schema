@@ -16,4 +16,9 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <MixedAssignment errorLevel="suppress" />
+        <MixedClone errorLevel="suppress" />
+    </issueHandlers>
 </psalm>
