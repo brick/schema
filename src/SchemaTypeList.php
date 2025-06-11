@@ -10,8 +10,9 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Override;
+use Stringable;
 
-final class SchemaTypeList implements Countable, IteratorAggregate
+final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 {
     /**
      * @var array<Thing|string>
@@ -107,9 +108,8 @@ final class SchemaTypeList implements Countable, IteratorAggregate
      *
      * If this list contains at least one string, the first string value will be returned.
      * If this list does not contain any string, an empty string is returned.
-     *
-     * @return string
      */
+    #[Override]
     public function __toString() : string
     {
         foreach ($this->values as $value) {

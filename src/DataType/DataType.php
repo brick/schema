@@ -7,11 +7,12 @@ namespace Brick\Schema\DataType;
 use Brick\Schema\SchemaType;
 use Brick\Schema\SchemaTypeList;
 use Override;
+use Stringable;
 
 /**
  * http://schema.org/DataType
  */
-class DataType implements SchemaType
+class DataType implements SchemaType, Stringable
 {
     private readonly string $number;
 
@@ -25,9 +26,7 @@ class DataType implements SchemaType
         $this->number = $number;
     }
 
-    /**
-     * @return string
-     */
+    #[Override]
     public function __toString() : string
     {
         return $this->number;
