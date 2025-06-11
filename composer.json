@@ -29,6 +29,7 @@
     }
   },
   "require-dev": {
-    "brick/varexporter": "^0.6"
+    "brick/varexporter": "^0.6",
+    "vimeo/psalm": "6.12.0"
   }
 }
