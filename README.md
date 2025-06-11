@@ -21,7 +21,7 @@ composer require brick/schema
 
 ### Requirements
 
-This library requires PHP 7.2 or later. It makes use of the following extensions:
+This library requires PHP 8.1 or later. It makes use of the following extensions:
 
 - [dom](https://www.php.net/manual/en/book.dom.php)
 - [json](https://www.php.net/manual/en/book.json.php)
