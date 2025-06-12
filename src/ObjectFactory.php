@@ -34,7 +34,7 @@ final class ObjectFactory
      *
      * @var array<string, Thing>
      */
-    private array $prototypeCache;
+    private array $prototypeCache = [];
 
     /**
      * ObjectFactory constructor.

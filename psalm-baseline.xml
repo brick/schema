@@ -7,9 +7,6 @@
     <MixedReturnStatement>
       <code><![CDATA[clone $object]]></code>
     </MixedReturnStatement>
-    <PropertyNotSetInConstructor>
-      <code><![CDATA[$prototypeCache]]></code>
-    </PropertyNotSetInConstructor>
   </file>
   <file src="src/SchemaReader.php">
     <MixedArgumentTypeCoercion>
