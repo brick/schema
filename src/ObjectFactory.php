@@ -20,7 +20,7 @@ final class ObjectFactory
      *
      * The keys of this array must exactly match the list of Thing interfaces we support.
      *
-     * @var string[][]
+     * @var array<string, list<string>>
      */
     private readonly array $propertiesByType;
 
@@ -32,14 +32,14 @@ final class ObjectFactory
      *
      * Keys are space-separated schema.org class names, ordered by name, e.g. 'Offer Product'.
      *
-     * @var Thing[]
+     * @var array<string, Thing>
      */
     private array $prototypeCache;
 
     /**
      * ObjectFactory constructor.
      *
-     * @param string[][] $propertiesByType
+     * @param array<string, list<string>> $propertiesByType
      */
     public function __construct(array $propertiesByType)
     {
