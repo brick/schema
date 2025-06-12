@@ -41,6 +41,6 @@ class DataType implements SchemaType, Stringable
     #[Override]
     public function getProperty(string $name) : SchemaTypeList
     {
-        return new SchemaTypeList([]);
+        return new SchemaTypeList();
     }
 }
