@@ -21,17 +21,4 @@
       <code><![CDATA[$idProperties]]></code>
     </MixedArgumentTypeCoercion>
   </file>
-  <file src="src/SchemaTypeList.php">
-    <InvalidTemplateParam>
-      <code><![CDATA[ArrayIterator<Thing|string>]]></code>
-    </InvalidTemplateParam>
-    <MissingTemplateParam>
-      <code><![CDATA[ArrayIterator<Thing|string>]]></code>
-      <code><![CDATA[IteratorAggregate]]></code>
-    </MissingTemplateParam>
-    <MixedReturnTypeCoercion>
-      <code><![CDATA[ArrayIterator<Thing|string>]]></code>
-      <code><![CDATA[new ArrayIterator($this->values)]]></code>
-    </MixedReturnTypeCoercion>
-  </file>
 </files>

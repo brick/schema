@@ -12,10 +12,13 @@ use IteratorAggregate;
 use Override;
 use Stringable;
 
+/**
+ * @template-implements IteratorAggregate<int<0, max>, Thing|string>
+ */
 final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 {
     /**
-     * @var array<Thing|string>
+     * @var list<Thing|string>
      */
     private array $values = [];
 
@@ -27,7 +30,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
     /**
      * Returns all the values in this list.
      *
-     * @return array<Thing|string>
+     * @return list<Thing|string>
      */
     public function getValues() : array
     {
@@ -93,7 +96,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
     /**
      * Makes the object iterable.
      *
-     * @return ArrayIterator<Thing|string>
+     * @return ArrayIterator<int<0, max>, Thing|string>
      */
     #[Override]
     public function getIterator() : ArrayIterator
