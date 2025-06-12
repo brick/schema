@@ -87,6 +87,7 @@ final class ObjectFactory
             implode(', ', $interfaces)
         );
 
+        /** @var Thing $object */
         $object = eval($php);
 
         $this->prototypeCache[$cacheKey] = $object;
