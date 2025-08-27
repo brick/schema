@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/DeliveryMethod
+ * schema:DeliveryMethod
  */
 interface DeliveryMethod extends Enumeration
 {

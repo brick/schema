@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/AskAction
+ * schema:AskAction
  *
  * @property-read SchemaTypeList<Question> $question A sub property of object. A question.
  */

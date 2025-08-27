@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/EventVenue
+ * schema:EventVenue
  */
 interface EventVenue extends CivicStructure
 {

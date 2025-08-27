@@ -8,11 +8,11 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Boolean;
 
 /**
- * http://schema.org/PublicationEvent
+ * schema:PublicationEvent
  *
- * @property-read SchemaTypeList<BroadcastService> $publishedOn         A broadcast service associated with the publication event.
- * @property-read SchemaTypeList<Boolean>          $free                A flag to signal that the item, event, or place is accessible for free.
- * @property-read SchemaTypeList<Boolean>          $isAccessibleForFree A flag to signal that the item, event, or place is accessible for free.
+ * @property-read SchemaTypeList<Organization|Person> $publishedBy An agent associated with the publication event.
+ * @property-read SchemaTypeList<Boolean>             $free        A flag to signal that the item, event, or place is accessible for free.
+ * @property-read SchemaTypeList<BroadcastService>    $publishedOn A broadcast service associated with the publication event.
  */
 interface PublicationEvent extends Event
 {

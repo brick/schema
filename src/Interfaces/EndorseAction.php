@@ -7,9 +7,9 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/EndorseAction
+ * schema:EndorseAction
  *
- * @property-read SchemaTypeList<Person|Organization> $endorsee A sub property of participant. The person/organization being supported.
+ * @property-read SchemaTypeList<Organization|Person> $endorsee A sub property of participant. The person/organization being supported.
  */
 interface EndorseAction extends ReactAction
 {

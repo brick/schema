@@ -8,9 +8,9 @@ use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Text;
 
 /**
- * http://schema.org/DataFeed
+ * schema:DataFeed
  *
- * @property-read SchemaTypeList<Thing|Text|DataFeedItem> $dataFeedElement An item within in a data feed. Data feeds may have many elements.
+ * @property-read SchemaTypeList<Text|DataFeedItem|Thing> $dataFeedElement An item within a data feed. Data feeds may have many elements.
  */
 interface DataFeed extends Dataset
 {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/ClothingStore
+ * schema:ClothingStore
  */
 interface ClothingStore extends Store
 {

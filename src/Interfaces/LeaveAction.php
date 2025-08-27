@@ -7,7 +7,7 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/LeaveAction
+ * schema:LeaveAction
  *
  * @property-read SchemaTypeList<Event> $event Upcoming or past event associated with this place, organization, or action.
  */

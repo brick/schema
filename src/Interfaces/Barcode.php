@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/Barcode
+ * schema:Barcode
  */
 interface Barcode extends ImageObject
 {

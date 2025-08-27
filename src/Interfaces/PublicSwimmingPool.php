@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/PublicSwimmingPool
+ * schema:PublicSwimmingPool
  */
 interface PublicSwimmingPool extends SportsActivityLocation
 {

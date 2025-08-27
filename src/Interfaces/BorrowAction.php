@@ -7,9 +7,9 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/BorrowAction
+ * schema:BorrowAction
  *
- * @property-read SchemaTypeList<Organization|Person> $lender A sub property of participant. The person that lends the object being borrowed.
+ * @property-read SchemaTypeList<Person|Organization> $lender A sub property of participant. The person that lends the object being borrowed.
  */
 interface BorrowAction extends TransferAction
 {

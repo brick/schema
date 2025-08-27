@@ -7,10 +7,10 @@ namespace Brick\Schema\Interfaces;
 use Brick\Schema\SchemaTypeList;
 
 /**
- * http://schema.org/EducationalOrganization
+ * schema:EducationalOrganization
  *
  * @property-read SchemaTypeList<Person> $alumni Alumni of an organization.
  */
-interface EducationalOrganization extends Organization
+interface EducationalOrganization extends Organization, CivicStructure
 {
 }

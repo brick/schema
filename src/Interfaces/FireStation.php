@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/FireStation
+ * schema:FireStation
  */
-interface FireStation extends CivicStructure, EmergencyService
+interface FireStation extends EmergencyService, CivicStructure
 {
 }

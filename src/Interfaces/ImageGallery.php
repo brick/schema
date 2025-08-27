@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Brick\Schema\Interfaces;
 
 /**
- * http://schema.org/ImageGallery
+ * schema:ImageGallery
  */
-interface ImageGallery extends CollectionPage
+interface ImageGallery extends MediaGallery
 {
 }
