@@ -25,7 +25,7 @@ abstract class Base
      *
      * @var string[]
      */
-    private $types;
+    private readonly array $types;
 
     /**
      * The list of schema.org properties supported by this instance.
@@ -35,7 +35,7 @@ abstract class Base
      *
      * @var string[]
      */
-    private $properties;
+    private readonly array $properties;
 
     /**
      * The values of each property, indexed by property name.
@@ -44,7 +44,7 @@ abstract class Base
      *
      * @var SchemaTypeList[]
      */
-    private $values = [];
+    private array $values = [];
 
     /**
      * Base constructor.
@@ -107,7 +107,7 @@ abstract class Base
      *
      * @throws LogicException
      */
-    public function __set(string $name, $value) : void
+    public function __set(string $name, mixed $value) : void
     {
         throw new LogicException('This object does not support writable properties.');
     }

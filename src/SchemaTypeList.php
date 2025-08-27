@@ -9,18 +9,20 @@ use Brick\Schema\Interfaces\Thing;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Override;
+use Stringable;
 
-class SchemaTypeList implements Countable, IteratorAggregate
+/**
+ * @template-implements IteratorAggregate<int<0, max>, Thing|string>
+ */
+final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 {
     /**
-     * @var array<Thing|string>
+     * @var list<Thing|string>
      */
-    private $values = [];
+    private array $values = [];
 
-    /**
-     * @param Thing|string $value
-     */
-    public function addValue($value) : void
+    public function addValue(Thing|string $value) : void
     {
         $this->values[] = $value;
     }
@@ -28,7 +30,7 @@ class SchemaTypeList implements Countable, IteratorAggregate
     /**
      * Returns all the values in this list.
      *
-     * @return array<Thing|string>
+     * @return list<Thing|string>
      */
     public function getValues() : array
     {
@@ -37,10 +39,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
 
     /**
      * Returns the first value in this list, or null if empty.
-     *
-     * @return Thing|string|null
      */
-    public function getFirstValue()
+    public function getFirstValue(): Thing|string|null
     {
         return $this->values[0] ?? null;
     }
@@ -87,6 +87,7 @@ class SchemaTypeList implements Countable, IteratorAggregate
      *
      * @return int
      */
+    #[Override]
     public function count() : int
     {
         return count($this->values);
@@ -95,8 +96,9 @@ class SchemaTypeList implements Countable, IteratorAggregate
     /**
      * Makes the object iterable.
      *
-     * @return ArrayIterator<Thing|string>
+     * @return ArrayIterator<int<0, max>, Thing|string>
      */
+    #[Override]
     public function getIterator() : ArrayIterator
     {
         return new ArrayIterator($this->values);
@@ -109,9 +111,8 @@ class SchemaTypeList implements Countable, IteratorAggregate
      *
      * If this list contains at least one string, the first string value will be returned.
      * If this list does not contain any string, an empty string is returned.
-     *
-     * @return string
      */
+    #[Override]
     public function __toString() : string
     {
         foreach ($this->values as $value) {

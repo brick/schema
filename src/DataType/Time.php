@@ -7,6 +7,6 @@ namespace Brick\Schema\DataType;
 /**
  * http://schema.org/Time
  */
-class Time extends DataType
+final class Time extends DataType
 {
 }

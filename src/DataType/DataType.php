@@ -6,16 +6,15 @@ namespace Brick\Schema\DataType;
 
 use Brick\Schema\SchemaType;
 use Brick\Schema\SchemaTypeList;
+use Override;
+use Stringable;
 
 /**
  * http://schema.org/DataType
  */
-class DataType implements SchemaType
+class DataType implements SchemaType, Stringable
 {
-    /**
-     * @var string
-     */
-    private $number;
+    private readonly string $number;
 
     /**
      * DataType constructor.
@@ -27,27 +26,21 @@ class DataType implements SchemaType
         $this->number = $number;
     }
 
-    /**
-     * @return string
-     */
+    #[Override]
     public function __toString() : string
     {
         return $this->number;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function includesProperty(string $name) : bool
     {
         return false;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getProperty(string $name) : SchemaTypeList
     {
-        return new SchemaTypeList([]);
+        return new SchemaTypeList();
     }
 }

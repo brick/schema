@@ -7,6 +7,6 @@ namespace Brick\Schema\DataType;
 /**
  * http://schema.org/Boolean
  */
-class Boolean extends DataType
+final class Boolean extends DataType
 {
 }

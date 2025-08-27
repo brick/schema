@@ -15,22 +15,13 @@ use Brick\StructuredData\Reader\ReaderChain;
 
 use DOMDocument;
 
-class SchemaReader
+final class SchemaReader
 {
-    /**
-     * @var Reader
-     */
-    private $reader;
+    private readonly Reader $reader;
 
-    /**
-     * @var HTMLReader
-     */
-    private $htmlReader;
+    private readonly HTMLReader $htmlReader;
 
-    /**
-     * @var ThingConverter
-     */
-    private $thingConverter;
+    private readonly ThingConverter $thingConverter;
 
     /**
      * SchemaReader constructor.
@@ -107,9 +98,8 @@ class SchemaReader
     {
         $idProperties = require __DIR__ . '/../data/id-properties.php';
 
-        $idPropertiesHttps = array_map(function(string $id) {
-            return preg_replace('/^http\:/', 'https:', $id);
-        }, $idProperties);
+        /** @var list<string> $idPropertiesHttps */
+        $idPropertiesHttps = array_map(fn(string $id) => preg_replace('/^http\:/', 'https:', $id), $idProperties);
 
         $idProperties = array_merge($idProperties, $idPropertiesHttps);
 

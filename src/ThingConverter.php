@@ -7,12 +7,9 @@ namespace Brick\Schema;
 use Brick\Schema\Interfaces\Thing;
 use Brick\StructuredData\Item;
 
-class ThingConverter
+final class ThingConverter
 {
-    /**
-     * @var ObjectFactory
-     */
-    private $objectFactory;
+    private readonly ObjectFactory $objectFactory;
 
     /**
      * ThingConverter constructor.
@@ -35,10 +32,7 @@ class ThingConverter
      */
     public function convertItemsToThings(array $items) : array
     {
-        $things = array_map(function(Item $item) {
-            return $this->convertItemToThing($item);
-        }, $items);
-
+        $things = array_map(fn(Item $item) => $this->convertItemToThing($item), $items);
         $things = array_filter($things);
         $things = array_values($things);
 

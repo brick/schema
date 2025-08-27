@@ -11,7 +11,7 @@ use Brick\Schema\Interfaces\Thing;
  *
  * @internal
  */
-class ObjectFactory
+final class ObjectFactory
 {
     /**
      * A map of schema.org type to list of schema.org properties.
@@ -20,9 +20,9 @@ class ObjectFactory
      *
      * The keys of this array must exactly match the list of Thing interfaces we support.
      *
-     * @var string[][]
+     * @var array<string, list<string>>
      */
-    private $propertiesByType = [];
+    private readonly array $propertiesByType;
 
     /**
      * A cache of dynamically created objects, indexed by schema.org class names.
@@ -32,14 +32,14 @@ class ObjectFactory
      *
      * Keys are space-separated schema.org class names, ordered by name, e.g. 'Offer Product'.
      *
-     * @var Thing[]
+     * @var array<string, Thing>
      */
-    private $prototypeCache;
+    private array $prototypeCache = [];
 
     /**
      * ObjectFactory constructor.
      *
-     * @param string[][] $propertiesByType
+     * @param array<string, list<string>> $propertiesByType
      */
     public function __construct(array $propertiesByType)
     {
@@ -57,10 +57,7 @@ class ObjectFactory
      */
     public function build(array $types) : ?Thing
     {
-        $types = array_filter($types, function(string $type) {
-            return isset($this->propertiesByType[$type]);
-        });
-
+        $types = array_filter($types, fn(string $type) => isset($this->propertiesByType[$type]));
         $types = array_values($types);
 
         if (! $types) {
@@ -75,14 +72,9 @@ class ObjectFactory
             return clone $this->prototypeCache[$cacheKey];
         }
 
-        $interfaces = array_map(function(string $type) : string {
-            return 'Brick\\Schema\\Interfaces\\' . $type;
-        }, $types);
+        $interfaces = array_map(fn(string $type): string => 'Brick\\Schema\\Interfaces\\' . $type, $types);
 
-        $properties = array_map(function(string $type) : array {
-            return $this->propertiesByType[$type];
-        }, $types);
-
+        $properties = array_map(fn(string $type): array => $this->propertiesByType[$type], $types);
         $properties = array_merge(...$properties);
         $properties = array_unique($properties);
         $properties = array_values($properties);
@@ -95,6 +87,7 @@ class ObjectFactory
             implode(', ', $interfaces)
         );
 
+        /** @var Thing $object */
         $object = eval($php);
 
         $this->prototypeCache[$cacheKey] = $object;

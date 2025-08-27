@@ -8,7 +8,7 @@ use Brick\VarExporter\VarExporter;
 
 require 'vendor/autoload.php';
 
-$schema = json_decode(file_get_contents(__DIR__ . '/schema.jsonld'), true);
+$schema = json_decode(file_get_contents(__DIR__ . '/schema.jsonld'), true, flags: JSON_THROW_ON_ERROR);
 
 $version = $schema['@id']; // http://schema.org/#26
 
