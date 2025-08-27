@@ -5,6 +5,7 @@
 A PHP library to read [schema.org](https://schema.org) structured data from HTML pages.
 
 [![Latest Stable Version](https://poser.pugx.org/brick/schema/v/stable)](https://packagist.org/packages/brick/schema)
+[![Total Downloads](https://poser.pugx.org/brick/schema/downloads)](https://packagist.org/packages/brick/schema)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 ### Introduction
