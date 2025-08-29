@@ -3,3 +3,6 @@
 /vendor
 /composer.lock
 
+/tools/*
+!/tools/ecs/composer.json
+!/tools/ecs/ecs.php
