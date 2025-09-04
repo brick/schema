@@ -7,6 +7,11 @@ namespace Brick\Schema;
 use Brick\Schema\Interfaces\Thing;
 use Brick\StructuredData\Item;
 
+use function array_filter;
+use function array_map;
+use function array_values;
+use function preg_match;
+
 final class ThingConverter
 {
     private readonly ObjectFactory $objectFactory;
@@ -30,9 +35,9 @@ final class ThingConverter
      *
      * @return Thing[]
      */
-    public function convertItemsToThings(array $items) : array
+    public function convertItemsToThings(array $items): array
     {
-        $things = array_map(fn(Item $item) => $this->convertItemToThing($item), $items);
+        $things = array_map(fn (Item $item) => $this->convertItemToThing($item), $items);
         $things = array_filter($things);
         $things = array_values($things);
 
@@ -43,12 +48,8 @@ final class ThingConverter
      * Converts a structured data Item to a schema.org Thing.
      *
      * If the types of the item do not match a schema.org Thing, this method returns null.
-     *
-     * @param Item $item
-     *
-     * @return Thing|null
      */
-    public function convertItemToThing(Item $item) : ?Thing
+    public function convertItemToThing(Item $item): ?Thing
     {
         $types = [];
 
@@ -99,11 +100,9 @@ final class ThingConverter
      *
      * e.g. http://schema.org/Product => Product
      *
-     * @param string $schemaOrgId
-     *
      * @return string|null The label, or null if not a valid schema.org id.
      */
-    private function schemaOrgIdToLabel(string $schemaOrgId) : ?string
+    private function schemaOrgIdToLabel(string $schemaOrgId): ?string
     {
         if (preg_match('/https?\:\/\/schema.org\/([A-Za-z0-9]+)$/', $schemaOrgId, $matches) === 1) {
             return $matches[1];

@@ -6,6 +6,16 @@ namespace Brick\Schema;
 
 use Brick\Schema\Interfaces\Thing;
 
+use function array_filter;
+use function array_map;
+use function array_merge;
+use function array_unique;
+use function array_values;
+use function implode;
+use function sort;
+use function sprintf;
+use function var_export;
+
 /**
  * Dynamically builds objects implementing arbitrary interfaces.
  *
@@ -55,9 +65,9 @@ final class ObjectFactory
      *
      * @return Thing|null The resulting Thing, or null if no known schema.org types are given.
      */
-    public function build(array $types) : ?Thing
+    public function build(array $types): ?Thing
     {
-        $types = array_filter($types, fn(string $type) => isset($this->propertiesByType[$type]));
+        $types = array_filter($types, fn (string $type) => isset($this->propertiesByType[$type]));
         $types = array_values($types);
 
         if (! $types) {
@@ -72,9 +82,9 @@ final class ObjectFactory
             return clone $this->prototypeCache[$cacheKey];
         }
 
-        $interfaces = array_map(fn(string $type): string => 'Brick\\Schema\\Interfaces\\' . $type, $types);
+        $interfaces = array_map(fn (string $type): string => 'Brick\\Schema\\Interfaces\\' . $type, $types);
 
-        $properties = array_map(fn(string $type): array => $this->propertiesByType[$type], $types);
+        $properties = array_map(fn (string $type): array => $this->propertiesByType[$type], $types);
         $properties = array_merge(...$properties);
         $properties = array_unique($properties);
         $properties = array_values($properties);
@@ -84,7 +94,7 @@ final class ObjectFactory
             var_export($types, true),
             var_export($properties, true),
             Base::class,
-            implode(', ', $interfaces)
+            implode(', ', $interfaces),
         );
 
         /** @var Thing $object */

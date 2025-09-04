@@ -7,6 +7,11 @@ namespace Brick\Schema;
 use LogicException;
 use OutOfRangeException;
 
+use function count;
+use function implode;
+use function in_array;
+use function sprintf;
+
 /**
  * The base class that dynamically created objects will extend.
  *
@@ -54,7 +59,7 @@ abstract class Base
      */
     public function __construct(array $types, array $properties)
     {
-        $this->types      = $types;
+        $this->types = $types;
         $this->properties = $properties;
     }
 
@@ -62,12 +67,8 @@ abstract class Base
      * Checks if a property is set.
      *
      * All supported properties will be initialized when first accessed, and are therefore considered set.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
-    public function __isset(string $name) : bool
+    public function __isset(string $name): bool
     {
         return in_array($name, $this->properties, true);
     }
@@ -77,11 +78,9 @@ abstract class Base
      *
      * @param string $name The property name, e.g. 'name' or 'description'.
      *
-     * @return SchemaTypeList
-     *
      * @throws OutOfRangeException
      */
-    public function __get(string $name) : SchemaTypeList
+    public function __get(string $name): SchemaTypeList
     {
         if (isset($this->values[$name])) {
             return $this->values[$name];
@@ -92,7 +91,7 @@ abstract class Base
                 'Property "%s" is not available in object of type%s %s',
                 $name,
                 count($this->types) > 1 ? 's' : '',
-                implode(', ', $this->types)
+                implode(', ', $this->types),
             ));
         }
 
@@ -100,26 +99,17 @@ abstract class Base
     }
 
     /**
-     * @param string $name
-     * @param mixed $value
-     *
-     * @return void
-     *
      * @throws LogicException
      */
-    public function __set(string $name, mixed $value) : void
+    public function __set(string $name, mixed $value): void
     {
         throw new LogicException('This object does not support writable properties.');
     }
 
     /**
-     * @param string $name
-     *
-     * @return void
-     *
      * @throws LogicException
      */
-    public function __unset(string $name) : void
+    public function __unset(string $name): void
     {
         throw new LogicException('This object does not support unsetting properties.');
     }

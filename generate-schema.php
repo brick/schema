@@ -19,11 +19,11 @@ $classes = [];
 $properties = [];
 
 foreach ($schema['@graph'] as $item) {
-    $id   = $item['@id'];
+    $id = $item['@id'];
     $type = $item['@type'];
 
     $comment = $item['rdfs:comment'];
-    $label   = $item['rdfs:label'];
+    $label = $item['rdfs:label'];
 
     if ($type === 'rdfs:Class') {
         $class = new _Class();
@@ -53,7 +53,7 @@ foreach ($schema['@graph'] as $item) {
         }
 
         $property->domainIncludesIds = getOneOrMoreIds($item, 'http://schema.org/domainIncludes');
-        $property->rangeIncludesIds  = getOneOrMoreIds($item, 'http://schema.org/rangeIncludes');
+        $property->rangeIncludesIds = getOneOrMoreIds($item, 'http://schema.org/rangeIncludes');
 
         $properties[] = $property;
     }
@@ -61,12 +61,8 @@ foreach ($schema['@graph'] as $item) {
 
 /**
  * Strips HTML tags out of comments, and only keep the first line as a short description.
- *
- * @param string $comment
- *
- * @return string
  */
-function cleanupComment(string $comment) : string
+function cleanupComment(string $comment): string
 {
     $comment = strip_tags($comment);
     $comment = html_entity_decode($comment, ENT_QUOTES | ENT_HTML5, 'UTF-8');
@@ -88,7 +84,7 @@ function cleanupComment(string $comment) : string
  *
  * @return string[] The values.
  */
-function getOneOrMoreIds(array $item, string $key) : array
+function getOneOrMoreIds(array $item, string $key): array
 {
     if (! isset($item[$key])) {
         return [];
@@ -96,11 +92,11 @@ function getOneOrMoreIds(array $item, string $key) : array
 
     if (isset($item[$key]['@id'])) {
         return [
-            $item[$key]['@id']
+            $item[$key]['@id'],
         ];
     }
 
-    return array_map(function(array $value) : string {
+    return array_map(function (array $value): string {
         return $value['@id'];
     }, $item[$key]);
 }
@@ -113,9 +109,9 @@ function getOneOrMoreIds(array $item, string $key) : array
  *
  * @return _Class[] A map of id to schema.org child classes.
  */
-function findChildren(array $classes, ?string $parentId) : array
+function findChildren(array $classes, ?string $parentId): array
 {
-    return array_filter($classes, function(_Class $class) use ($parentId) : bool {
+    return array_filter($classes, function (_Class $class) use ($parentId): bool {
         if ($parentId === null) {
             return $class->subClassOfIds === [];
         }
@@ -132,10 +128,8 @@ function findChildren(array $classes, ?string $parentId) : array
  * e.g. ['Thing' => [], 'Product' => ['Thing'], ...]
  *
  * @param _Class[] $classes A map of id to schema.org classes.
- *
- * @return array
  */
-function getSubclassOf(array $classes) : array
+function getSubclassOf(array $classes): array
 {
     $result = [];
 
@@ -165,7 +159,7 @@ $subclassOf = getSubclassOf($classes);
  *
  * @return string[] The parent class labels.
  */
-function getClassParents(string $class) : array
+function getClassParents(string $class): array
 {
     global $subclassOf;
 
@@ -192,20 +186,18 @@ function getClassParents(string $class) : array
  *
  * @param _Class[]    $classes    A map of id to schema.org classes to generate.
  * @param _Property[] $properties The flat map of id to schema.org properties.
- *
- * @return array
  */
-function getClassProperties(array $classes, array $properties) : array
+function getClassProperties(array $classes, array $properties): array
 {
     $result = [];
 
     foreach ($classes as $id => $class) {
         /** @var _Property[] $classProperties */
-        $classProperties = array_filter($properties, function(_Property $property) use ($id) : bool {
+        $classProperties = array_filter($properties, function (_Property $property) use ($id): bool {
             return in_array($id, $property->domainIncludesIds, true);
         });
 
-        $classProperties = array_map(function(_Property $property) {
+        $classProperties = array_map(function (_Property $property) {
             return $property->label;
         }, $classProperties);
 
@@ -223,10 +215,8 @@ $classProperties = getClassProperties($classes, $properties);
  * e.g. ['Thing' => ['name', 'url', ...], 'Product' => ['sku', 'mpn', ...], ...]
  *
  * Class names and property names are sorted.
- *
- * @return array
  */
-function getClassAllProperties() : array
+function getClassAllProperties(): array
 {
     global $classes;
     global $classProperties;
@@ -262,16 +252,15 @@ function getClassAllProperties() : array
 $classAllProperties = getClassAllProperties();
 
 file_put_contents(__DIR__ . '/data/properties.php', '<?php ' . VarExporter::export(
-        $classAllProperties, VarExporter::ADD_RETURN
-    ));
+    $classAllProperties,
+    VarExporter::ADD_RETURN,
+));
 
 /**
  * @param _Class[]    $classes    A map of id to schema.org classes to generate.
  * @param _Property[] $properties The flat map of id to schema.org properties.
- *
- * @return void
  */
-function generatePhpInterfaces(array $classes, array $properties) : void
+function generatePhpInterfaces(array $classes, array $properties): void
 {
     global $subclassOf;
 
@@ -285,26 +274,26 @@ function generatePhpInterfaces(array $classes, array $properties) : void
         }
 
         /** @var _Property[] $classProperties */
-        $classProperties = array_filter($properties, function(_Property $property) use ($id) : bool {
+        $classProperties = array_filter($properties, function (_Property $property) use ($id): bool {
             return in_array($id, $property->domainIncludesIds, true);
         });
 
-        $maxNameLength = array_reduce($classProperties, function(int $max, _Property $property) : int {
+        $maxNameLength = array_reduce($classProperties, function (int $max, _Property $property): int {
             return max($max, strlen($property->label));
         }, 0);
 
         $maxTypeLength = 0;
 
         $typeMap = [
-            'http://schema.org/Text'     => 'Text',
-            'http://schema.org/Number'   => 'Number',
-            'http://schema.org/Date'     => 'Date',
+            'http://schema.org/Text' => 'Text',
+            'http://schema.org/Number' => 'Number',
+            'http://schema.org/Date' => 'Date',
             'http://schema.org/DateTime' => 'DateTime',
-            'http://schema.org/Time'     => 'Time',
-            'http://schema.org/Boolean'  => 'Boolean',
+            'http://schema.org/Time' => 'Time',
+            'http://schema.org/Boolean' => 'Boolean',
         ];
 
-        $php  = "<?php\n\n";
+        $php = "<?php\n\n";
         $php .= "declare(strict_types=1);\n\n";
         $php .= "namespace Brick\Schema\Interfaces;\n\n";
 

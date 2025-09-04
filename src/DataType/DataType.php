@@ -18,8 +18,6 @@ class DataType implements SchemaType, Stringable
 
     /**
      * DataType constructor.
-     *
-     * @param string $number
      */
     public function __construct(string $number)
     {
@@ -27,20 +25,20 @@ class DataType implements SchemaType, Stringable
     }
 
     #[Override]
-    public function __toString() : string
-    {
-        return $this->number;
-    }
-
-    #[Override]
-    public function includesProperty(string $name) : bool
+    public function includesProperty(string $name): bool
     {
         return false;
     }
 
     #[Override]
-    public function getProperty(string $name) : SchemaTypeList
+    public function getProperty(string $name): SchemaTypeList
     {
         return new SchemaTypeList();
+    }
+
+    #[Override]
+    public function __toString(): string
+    {
+        return $this->number;
     }
 }

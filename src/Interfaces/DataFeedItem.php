@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Brick\Schema\Interfaces;
 
-use Brick\Schema\SchemaTypeList;
 use Brick\Schema\DataType\Date;
 use Brick\Schema\DataType\DateTime;
+use Brick\Schema\SchemaTypeList;
 
 /**
  * http://schema.org/DataFeedItem

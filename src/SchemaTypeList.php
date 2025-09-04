@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Brick\Schema;
 
-use Brick\Schema\Interfaces\Thing;
-
 use ArrayIterator;
+use Brick\Schema\Interfaces\Thing;
 use Countable;
 use IteratorAggregate;
 use Override;
 use Stringable;
+
+use function count;
+use function is_string;
+use function trim;
 
 /**
  * @template-implements IteratorAggregate<int<0, max>, Thing|string>
@@ -22,7 +25,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
      */
     private array $values = [];
 
-    public function addValue(Thing|string $value) : void
+    public function addValue(Thing|string $value): void
     {
         $this->values[] = $value;
     }
@@ -32,7 +35,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
      *
      * @return list<Thing|string>
      */
-    public function getValues() : array
+    public function getValues(): array
     {
         return $this->values;
     }
@@ -47,10 +50,8 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 
     /**
      * Returns the first non-empty trimmed string from the list, or null if none.
-     *
-     * @return string|null
      */
-    public function getFirstNonEmptyStringValue() : ?string
+    public function getFirstNonEmptyStringValue(): ?string
     {
         foreach ($this->values as $value) {
             if (is_string($value)) {
@@ -70,10 +71,8 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
      *
      * If this list contains at least one value, and the first one is a string, this one is returned.
      * If the list is empty, or the first value is not a string, null is returned.
-     *
-     * @return string|null
      */
-    public function toString() : ?string
+    public function toString(): ?string
     {
         if (isset($this->values[0]) && is_string($this->values[0])) {
             return $this->values[0];
@@ -84,11 +83,9 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 
     /**
      * Returns the number of values in this list.
-     *
-     * @return int
      */
     #[Override]
-    public function count() : int
+    public function count(): int
     {
         return count($this->values);
     }
@@ -99,7 +96,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
      * @return ArrayIterator<int<0, max>, Thing|string>
      */
     #[Override]
-    public function getIterator() : ArrayIterator
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->values);
     }
@@ -113,7 +110,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
      * If this list does not contain any string, an empty string is returned.
      */
     #[Override]
-    public function __toString() : string
+    public function __toString(): string
     {
         foreach ($this->values as $value) {
             if (is_string($value)) {
