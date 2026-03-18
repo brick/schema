@@ -16,7 +16,7 @@ use function is_string;
 use function trim;
 
 /**
- * @template-implements IteratorAggregate<int<0, max>, Thing|string>
+ * @template-implements IteratorAggregate<int, Thing|string>
  */
 final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
 {
@@ -93,7 +93,7 @@ final class SchemaTypeList implements Countable, IteratorAggregate, Stringable
     /**
      * Makes the object iterable.
      *
-     * @return ArrayIterator<int<0, max>, Thing|string>
+     * @return ArrayIterator<int, Thing|string>
      */
     #[Override]
     public function getIterator(): ArrayIterator

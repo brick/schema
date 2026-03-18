@@ -21,6 +21,7 @@ final class ThingConverter
      */
     public function __construct()
     {
+        /** @var array<string, list<string>> $properties */
         $properties = require __DIR__ . '/../data/properties.php';
 
         $this->objectFactory = new ObjectFactory($properties);

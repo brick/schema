@@ -84,6 +84,7 @@ final class SchemaReader
      */
     public static function buildJsonLdReader(): JsonLdReader
     {
+        /** @var list<string> $idProperties */
         $idProperties = require __DIR__ . '/../data/id-properties.php';
 
         /** @var list<string> $idPropertiesHttps */
